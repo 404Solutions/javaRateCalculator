@@ -1,15 +1,19 @@
+package insurance;
+
 public class Home {
     private int homeID;
+    private double value;
     private int yearBuilt;
-    private String homeType;
-    private String heatingType;
+    private int homeType;
+    private int heatingType;
     private String postalCode;
     private String address;
     private String city;
     private String province;
 
-    public Home(int homeID, int yearBuilt, String homeType, String heatingType, String postalCode, String address, String city, String province) {
+    public Home(int homeID, double value, int yearBuilt, Integer homeType, Integer heatingType, String postalCode, String address, String city, String province) {
         this.homeID = homeID;
+        this.value = value;
         this.yearBuilt = yearBuilt;
         this.homeType = homeType;
         this.heatingType = heatingType;
@@ -23,15 +27,19 @@ public class Home {
         return homeID;
     }
 
+    public double getValue() {
+        return value;
+    }
+
     public int getYearBuilt() {
         return yearBuilt;
     }
 
-    public String getHomeType() {
+    public int getHomeType() {
         return homeType;
     }
 
-    public String getHeatingType() {
+    public int getHeatingType() {
         return heatingType;
     }
 
@@ -55,15 +63,19 @@ public class Home {
         this.homeID = homeID;
     }
 
+    public void setValue(double value) {
+        this.value = value;
+    }
+
     public void setYearBuilt(int yearBuilt) {
         this.yearBuilt = yearBuilt;
     }
 
-    public void setHomeType(String homeType) {
+    public void setHomeType(int homeType) {
         this.homeType = homeType;
     }
 
-    public void setHeatingType(String heatingType) {
+    public void setHeatingType(int heatingType) {
         this.heatingType = heatingType;
     }
 

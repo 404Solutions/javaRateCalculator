@@ -1,3 +1,5 @@
+package insurance;
+
 public class VehiclePolicy extends Policy {
 
     private Vehicle vehicle;

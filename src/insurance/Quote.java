@@ -1,18 +1,18 @@
-public class Policy {
+package insurance;
 
-    private String policyID;
+public abstract class Quote {
+
+    private int quoteID;
     private User user;
-    private Quote quote;
     private String startDate;
     private String endDate;
     private double basePremium;
     private double tax;
     private double total;
 
-    public Policy(String policyID, User user, Quote quote, String startDate, String endDate, double basePremium, double tax, double total) {
-        this.policyID = policyID;
+    public Quote(int quoteID, User user, String startDate, String endDate, double basePremium, double tax, double total) {
+        this.quoteID = quoteID;
         this.user = user;
-        this.quote = quote;
         this.startDate = startDate;
         this.endDate = endDate;
         this.basePremium = basePremium;
@@ -20,12 +20,12 @@ public class Policy {
         this.total = total;
     }
 
-    public String getPolicyID() {
-        return policyID;
+    public int getQuoteID() {
+        return quoteID;
     }
 
-    public void setPolicyID(String policyID) {
-        this.policyID = policyID;
+    public void setQuoteID(int quoteID) {
+        this.quoteID = quoteID;
     }
 
     public User getUser() {
@@ -34,14 +34,6 @@ public class Policy {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Quote getQuote() {
-        return quote;
-    }
-
-    public void setQuote(Quote quote) {
-        this.quote = quote;
     }
 
     public String getStartDate() {

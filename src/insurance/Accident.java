@@ -1,15 +1,18 @@
-public class Accidents {
+package insurance;
+
+public class Accident {
     private int accidentsID;
     private Driver driver;
     private int secondaryID;
-    private String dateOfAccident;
+    //TODO should we store the full date or just the year?
+    private int yearOfAccident;
     private Boolean responsible;
 
-    public Accidents(int accidentsID, Driver driver, int secondaryID, String dateOfAccident, Boolean responsible) {
+    public Accident(int accidentsID, Driver driver, int secondaryID, int yearOfAccident, Boolean responsible) {
         this.accidentsID = accidentsID;
         this.driver = driver;
         this.secondaryID = secondaryID;
-        this.dateOfAccident = dateOfAccident;
+        this.yearOfAccident = yearOfAccident;
         this.responsible = responsible;
     }
 
@@ -25,8 +28,8 @@ public class Accidents {
         return secondaryID;
     }
 
-    public String getDateOfAccident() {
-        return dateOfAccident;
+    public int getYearOfAccident() {
+        return yearOfAccident;
     }
 
     public Boolean getResponsible() {
@@ -45,8 +48,8 @@ public class Accidents {
         this.secondaryID = secondaryID;
     }
 
-    public void setDateOfAccident(String dateOfAccident) {
-        this.dateOfAccident = dateOfAccident;
+    public void setYearOfAccident(int yearOfAccident) {
+        this.yearOfAccident = yearOfAccident;
     }
 
     public void setResponsible(Boolean responsible) {
