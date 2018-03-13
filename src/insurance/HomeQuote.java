@@ -1,16 +1,18 @@
-public class HomePolicy extends Policy {
+package insurance;
+
+public class HomeQuote extends Quote {
 
     private Home home;
     private double replacementCost;
-    private double liabilitLimit;
+    private double liabilityLimit;
     private double contentsLimit;
     private double contentsDeductible;
 
-    public HomePolicy(String policyID, User user, Quote quote, String startDate, String endDate, double basePremium, double tax, double total, Home home, double replacementCost, double liabilitLimit, double contentsLimit, double contentsDeductible) {
-        super(policyID, user, quote, startDate, endDate, basePremium, tax, total);
+    public HomeQuote(int quoteID, User user, String startDate, String endDate, double basePremium, double tax, double total, Home home, double replacementCost, double liabilityLimit, double contentsLimit, double contentsDeductible) {
+        super(quoteID, user, startDate, endDate, basePremium, tax, total);
         this.home = home;
         this.replacementCost = replacementCost;
-        this.liabilitLimit = liabilitLimit;
+        this.liabilityLimit = liabilityLimit;
         this.contentsLimit = contentsLimit;
         this.contentsDeductible = contentsDeductible;
     }
@@ -31,12 +33,12 @@ public class HomePolicy extends Policy {
         this.replacementCost = replacementCost;
     }
 
-    public double getLiabilitLimit() {
-        return liabilitLimit;
+    public double getLiabilityLimit() {
+        return liabilityLimit;
     }
 
-    public void setLiabilitLimit(double liabilitLimit) {
-        this.liabilitLimit = liabilitLimit;
+    public void setLiabilityLimit(double liabilityLimit) {
+        this.liabilityLimit = liabilityLimit;
     }
 
     public double getContentsLimit() {

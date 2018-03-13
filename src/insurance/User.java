@@ -1,4 +1,6 @@
-public class User {
+package insurance;
+
+public abstract class User {
 
     private int userId;
     private String dateOfBirth;

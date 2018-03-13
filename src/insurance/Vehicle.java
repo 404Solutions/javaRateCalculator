@@ -1,12 +1,16 @@
+package insurance;
+
 public class Vehicle {
     private int vehicleID;
+    private double vehicleValue;
     private String make;
     private int year;
     private String model;
     private String plateNumber;
 
-    public Vehicle(int vehicleID, String make, int year, String model, String plateNumber) {
+    public Vehicle(int vehicleID, double vehicleValue, String make, int year, String model, String plateNumber) {
         this.vehicleID = vehicleID;
+        this.vehicleValue = vehicleValue;
         this.make = make;
         this.year = year;
         this.model = model;
@@ -15,6 +19,10 @@ public class Vehicle {
 
     public int getVehicleID() {
         return vehicleID;
+    }
+
+    public double getVehicleValue() {
+        return vehicleValue;
     }
 
     public String getMake() {
@@ -35,6 +43,10 @@ public class Vehicle {
 
     public void setVehicleID(int vehicleID) {
         this.vehicleID = vehicleID;
+    }
+
+    public void setVehicleValue(double vehicleValue) {
+        this.vehicleValue = vehicleValue;
     }
 
     public void setMake(String make) {

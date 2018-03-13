@@ -1,3 +1,5 @@
+package insurance;
+
 public class HomeOwner extends User {
 
     public HomeOwner (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
