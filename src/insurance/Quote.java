@@ -2,7 +2,7 @@ package insurance;
 
 public abstract class Quote {
 
-    private int quoteID;
+    private String quoteID;
     private User user;
     private String startDate;
     private String endDate;
@@ -10,7 +10,7 @@ public abstract class Quote {
     private double tax;
     private double total;
 
-    public Quote(int quoteID, User user, String startDate, String endDate, double basePremium, double tax, double total) {
+    public Quote(String quoteID, User user, String startDate, String endDate, double basePremium, double tax, double total) {
         this.quoteID = quoteID;
         this.user = user;
         this.startDate = startDate;
@@ -20,11 +20,11 @@ public abstract class Quote {
         this.total = total;
     }
 
-    public int getQuoteID() {
+    public String getQuoteID() {
         return quoteID;
     }
 
-    public void setQuoteID(int quoteID) {
+    public void setQuoteID(String quoteID) {
         this.quoteID = quoteID;
     }
 
