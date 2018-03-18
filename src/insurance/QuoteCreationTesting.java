@@ -14,9 +14,7 @@ public class QuoteCreationTesting {
 
         HomeOwner homeOwner = new HomeOwner(1, "","","","","","","","");
         Home home = new Home(1,123,1993,1,2,"a1v2k4","","","");
-        HomeQuote homeQuote =  new HomeQuote("",homeOwner, "", "", 1245.66,543.1, 1254.88, home, 1234, 2121,4322, 534);
         quoteManager.createNewQuote(4000.00,50.95,4050.96, home, homeOwner);
-
 //
 //        Scanner input = new Scanner(System.in);
 //        NumberFormat formatter = NumberFormat.getCurrencyInstance();
