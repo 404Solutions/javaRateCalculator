@@ -10,17 +10,26 @@ public abstract class Driver extends User {
     private int locationCode;
     private ArrayList<Accident> accidents;
 
-    public Driver (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
-                   String email, String gender, String postalCode, String driversLicenceNumber, int licenceYearIssued,
-                    int locationCode) {
+    public Driver (int userId, String firstName, String lastname, String dateOfBirth, String address, String city,
+                   String province, String postalCode, String phoneNumber, String email, String gender,
+                   String driversLicenceNumber, int licenseYearIssued, int locationCode) {
 
-        super(userId, dateOfBirth, address, city, province, phoneNumber,
-                email, gender, postalCode);
+        super(userId, firstName, lastname, dateOfBirth, address, city, province, phoneNumber, postalCode,
+                email, gender);
 
+        this.licenceYearIssued = licenseYearIssued;
         this.driversLicenceNumber = driversLicenceNumber;
-        this.licenceYearIssued = licenceYearIssued;
         this.locationCode = locationCode;
         accidents = new ArrayList<>();
+    }
+
+
+    public int getLicenceYearIssued() {
+        return licenceYearIssued;
+    }
+
+    public void setLicenceYearIssued(int licenceYearIssued) {
+        this.licenceYearIssued = licenceYearIssued;
     }
 
     public String getDriversLicenceNumber() {
@@ -29,14 +38,6 @@ public abstract class Driver extends User {
 
     public void setDriversLicenceNumber(String driversLicenceNumber) {
         this.driversLicenceNumber = driversLicenceNumber;
-    }
-
-    public int getLicenceYearIssued() {
-        return licenceYearIssued;
-    }
-
-    public void setLicenceYearIssued(int licenceYearIssued) {
-        this.licenceYearIssued = licenceYearIssued;
     }
 
     public int getLocationCode() {

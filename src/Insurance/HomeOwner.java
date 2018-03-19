@@ -2,11 +2,11 @@ package Insurance;
 
 public class HomeOwner extends User {
 
-    public HomeOwner (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
-                 String email, String gender, String postalCode) {
+    public HomeOwner (int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+                      String province, String postalCode, String phoneNumber, String email, String gender) {
 
-        super(userId, dateOfBirth, address, city, province, phoneNumber,
-                email, gender, postalCode);
+        super(userId, firstName, lastName, dateOfBirth, address, city, province, postalCode, phoneNumber,
+                email, gender);
 
     }
 
