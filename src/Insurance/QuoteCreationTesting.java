@@ -82,21 +82,22 @@ public class QuoteCreationTesting {
 
             //Calculate home premium and call quote manager to create a quote
             double homePremium = HomePremium.calcPremium(home.getValue(), home.getYearBuilt(), home.getHomeType(), home.getHeatingType());
-            HomeQuote homeQuote = homeQuoteManager.createNewQuote(homePremium, tax, homePremium * tax, home, homeOwner);
+            HomeQuote homeQuote = homeQuoteManager.createNewQuote(homePremium, homePremium * tax, homePremium * tax *100, home, homeOwner);
 
             //Display the quote information to the user
-            System.out.printf("--------------------Quote Number: %s--------------------", homeQuote.getQuoteID());
-            System.out.printf("Address: %s", home.getAddress());
-            System.out.printf("City: %s", home.getCity());
-            System.out.printf("Province: %s", home.getProvince());
-            System.out.printf("Postal Code: %s", home.getPostalCode());
-            System.out.printf("Year Built: %d", home.getYearBuilt());
-            System.out.println("----------------------------------------------------------");
-            System.out.printf("Quote Start Date: %s", homeQuote.getStartDate());
-            System.out.printf("Quote Expiry Date: %s", homeQuote.getEndDate());
-            System.out.printf("Home Value: %f", home.getValue());
-            System.out.printf("Base Premium: %f", homeQuote.getBasePremium());
-            System.out.printf("Total: %f", homeQuote.getTotal());
+            System.out.printf("--------------------Quote Number: %s--------------------\n", homeQuote.getQuoteID());
+            System.out.printf("Address: %s\n", home.getAddress());
+            System.out.printf("City: %s\n", home.getCity());
+            System.out.printf("Province: %s\n", home.getProvince());
+            System.out.printf("Postal Code: %s\n", home.getPostalCode());
+            System.out.printf("Year Built: %d\n", home.getYearBuilt());
+            System.out.println("----------------------------------------------------------\n");
+            System.out.printf("Quote Start Date: %s\n", homeQuote.getStartDate());
+            System.out.printf("Quote Expiry Date: %s\n", homeQuote.getEndDate());
+            System.out.printf("Home Value: $%.2f\n", home.getValue());
+            System.out.printf("Base Premium: $%.2f\n", homeQuote.getBasePremium());
+            System.out.printf("Tax: $%.2f\n", homeQuote.getTax());
+            System.out.printf("Total: $%.2f\n", homeQuote.getTotal());
 
         } else {
 
@@ -162,21 +163,22 @@ public class QuoteCreationTesting {
             double vehiclePremium = VehiclePremium.calcPremium(vehicle.getVehicleValue(), driver.getLicenceYearIssued(),
                     driver.getLocationCode(), driver.getAccidents());
 
-            VehicleQuote vehicleQuote = vehicleQuoteManager.createNewQuote(vehiclePremium, tax, vehiclePremium * tax,
-                    vehicle, driver);
+            VehicleQuote vehicleQuote = vehicleQuoteManager.createNewQuote(vehiclePremium, vehiclePremium* tax,
+                    vehiclePremium * tax * 100, vehicle, driver);
 
             //Display quote information to user
-            System.out.printf("--------------------Quote Number: %s--------------------", vehicleQuote.getQuoteID());
-            System.out.printf("Vehicle Make: %s", vehicle.getMake());
-            System.out.printf("Vehicle Model: %s", vehicle.getModel());
-            System.out.printf("Vehicle Year: %d", vehicle.getYear());
-            System.out.printf("Plate Number: %s", vehicle.getPlateNumber());
-            System.out.println("----------------------------------------------------------");
-            System.out.printf("Quote Start Date: %s", vehicleQuote.getStartDate());
-            System.out.printf("Quote Expiry Date: %s", vehicleQuote.getEndDate());
-            System.out.printf("Vehicle Value: %f", vehicleQuote.getReplacementCost());
-            System.out.printf("Base Premium: %f", vehicleQuote.getBasePremium());
-            System.out.printf("Total: %f", vehicleQuote.getTotal());
+            System.out.printf("--------------------Quote Number: %s--------------------\n", vehicleQuote.getQuoteID());
+            System.out.printf("Vehicle Make: %s\n", vehicle.getMake());
+            System.out.printf("Vehicle Model: %s\n", vehicle.getModel());
+            System.out.printf("Vehicle Year: %d\n", vehicle.getYear());
+            System.out.printf("Plate Number: %s\n", vehicle.getPlateNumber());
+            System.out.println("----------------------------------------------------------\n");
+            System.out.printf("Quote Start Date: %s\n", vehicleQuote.getStartDate());
+            System.out.printf("Quote Expiry Date: %s\n", vehicleQuote.getEndDate());
+            System.out.printf("Vehicle Value: $%.2f\n", vehicleQuote.getReplacementCost());
+            System.out.printf("Base Premium: $%.2f\n", vehicleQuote.getBasePremium());
+            System.out.printf("Tax: $%.2f\n", vehicleQuote.getTax());
+            System.out.printf("Total: $%.2f\n", vehicleQuote.getTotal());
         }
     }
 }
