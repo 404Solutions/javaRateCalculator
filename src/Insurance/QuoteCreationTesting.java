@@ -67,6 +67,7 @@ public class QuoteCreationTesting {
             System.out.println("Please answer the following questions regarding your home:\n");
             System.out.println("Home value:");
             double value = input.nextDouble();
+            input.nextLine();
             System.out.println("Year built:");
             int year = input.nextInt();
             input.nextLine();
@@ -94,7 +95,7 @@ public class QuoteCreationTesting {
             System.out.println("----------------------------------------------------------\n");
             System.out.printf("Quote Start Date: %s\n", homeQuote.getStartDate());
             System.out.printf("Quote Expiry Date: %s\n", homeQuote.getEndDate());
-            System.out.printf("Home Value: $%.2f\n", home.getValue());
+            System.out.printf("Home Value: $%.2f\n", homeQuote.getReplacementCost());
             System.out.printf("Base Premium: $%.2f\n", homeQuote.getBasePremium());
             System.out.printf("Tax: $%.2f\n", homeQuote.getTax());
             System.out.printf("Total: $%.2f\n", homeQuote.getTotal());
@@ -118,6 +119,7 @@ public class QuoteCreationTesting {
             System.out.println("Please answer the following questions regarding your vehicle:\n");
             System.out.println("Vehicle value:");
             double value = input.nextDouble();
+            input.nextLine();
             System.out.println("Vehicle make: ");
             String make = input.nextLine();
             System.out.println("Vehicle year: ");

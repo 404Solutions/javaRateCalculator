@@ -30,7 +30,7 @@ public class HomeQuoteManager {
      * @throws SQLException
      */
     public HomeQuote createNewQuote(double basePremium, double tax, double total, Home home, HomeOwner homeOwner) throws SQLException {
-        HomeQuote quote =  new HomeQuote("", homeOwner, null, null, basePremium, tax, total, home, 1234, 2121,4322, 534);
+        HomeQuote quote =  new HomeQuote("", homeOwner, null, null, basePremium, tax, total, home, home.getValue(), 0,0, 0);
         try {
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
@@ -54,8 +54,6 @@ public class HomeQuoteManager {
             ConvertDates convertDates = new ConvertDates();
             quote.setStartDate(convertDates.convertToUtilDate(resultSet.getDate("DateQuoted")));
             quote.setEndDate(convertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
-            //TODO: Remove this print.
-            System.out.print(quote.getQuoteID() + ","  + quote.getBasePremium()+ "," + quote.getTax() + "," + quote.getStartDate());
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
@@ -89,8 +87,6 @@ public class HomeQuoteManager {
             quote.setBasePremium(resultSet.getDouble("BasePremium"));
             quote.setTax(resultSet.getDouble("Tax"));
             quote.setTotal(resultSet.getDouble("Total"));
-            //TODO: Remove this print.
-            System.out.print(quote.getQuoteID() + ","  + quote.getBasePremium()+ "," + quote.getTax());
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
