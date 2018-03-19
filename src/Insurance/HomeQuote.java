@@ -10,7 +10,9 @@ public class HomeQuote extends Quote {
     private double contentsLimit;
     private double contentsDeductible;
 
-    public HomeQuote(String quoteID, User user, Date startDate, Date endDate, double basePremium, double tax, double total, Home home, double replacementCost, double liabilityLimit, double contentsLimit, double contentsDeductible) {
+    public HomeQuote(String quoteID, User user, Date startDate, Date endDate, double basePremium, double tax,
+                     double total, Home home, double replacementCost, double liabilityLimit, double contentsLimit,
+                     double contentsDeductible) {
         super(quoteID, user, startDate, endDate, basePremium, tax, total);
         this.home = home;
         this.replacementCost = replacementCost;
