@@ -5,22 +5,32 @@ import java.util.ArrayList;
 public abstract class Driver extends User {
 
     private String driversLicenceNumber;
+
     //TODO Change licenceYearIssued to Date AFTER Console Calculation
     private int licenceYearIssued;
     private int locationCode;
     private ArrayList<Accident> accidents;
 
     public Driver (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
-                   String email, String gender, String postalCode, String driversLicenceNumber, int licenceYearIssued,
+                   String email, String gender, String postalCode, String driversLicenceNumber, int licenseYearIssued,
                     int locationCode) {
 
         super(userId, dateOfBirth, address, city, province, phoneNumber,
                 email, gender, postalCode);
 
+        this.licenceYearIssued = licenseYearIssued;
         this.driversLicenceNumber = driversLicenceNumber;
-        this.licenceYearIssued = licenceYearIssued;
         this.locationCode = locationCode;
         accidents = new ArrayList<>();
+    }
+
+
+    public int getLicenceYearIssued() {
+        return licenceYearIssued;
+    }
+
+    public void setLicenceYearIssued(int licenceYearIssued) {
+        this.licenceYearIssued = licenceYearIssued;
     }
 
     public String getDriversLicenceNumber() {
@@ -29,14 +39,6 @@ public abstract class Driver extends User {
 
     public void setDriversLicenceNumber(String driversLicenceNumber) {
         this.driversLicenceNumber = driversLicenceNumber;
-    }
-
-    public int getLicenceYearIssued() {
-        return licenceYearIssued;
-    }
-
-    public void setLicenceYearIssued(int licenceYearIssued) {
-        this.licenceYearIssued = licenceYearIssued;
     }
 
     public int getLocationCode() {
