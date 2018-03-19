@@ -23,8 +23,7 @@ public class QuoteCreationTesting {
 //        PrimaryDriver primary = new PrimaryDriver(0,"","","","","","","","", "",1992,2);
 //        Vehicle vehicle = new Vehicle(0,321,"",1990,"","");
 //        vehicleQuoteManager.createNewQuote(4012.0,650,2451,vehicle,primary);
-
-
+        
         Scanner input = new Scanner(System.in);
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
@@ -33,29 +32,30 @@ public class QuoteCreationTesting {
 
         System.out.println("Enter 1 for Home Quote 2 for Auto Quote");
         int quoteType = input.nextInt();
+        input.nextLine();
 
         //Get user info
         System.out.println("Please enter the following questions about yourself:\n");
-        System.out.println("First Name:");
-        String firstName = input.next();
-        System.out.println("Last Name");
-        String lastName = input.next();
+        System.out.print("First Name:");
+        String firstName = input.nextLine();
+        System.out.print("Last Name:");
+        String lastName = input.nextLine();
         System.out.println("Date of Birth DD-MM-YYYY:");
-        String DOB = input.next();
+        String DOB = input.nextLine();
         System.out.println("Street Address:");
-        String address = input.next();
+        String address = input.nextLine();
         System.out.println("City:");
-        String city = input.next();
+        String city = input.nextLine();
         System.out.println("Province:");
-        String province = input.next();
+        String province = input.nextLine();
         System.out.println("Postal Code");
-        String postal = input.next();
+        String postal = input.nextLine();
         System.out.println("Phone Number:");
-        String phone = input.next();
+        String phone = input.nextLine();
         System.out.println("Email:");
-        String email = input.next();
+        String email = input.nextLine();
         System.out.println("Gender: (m/f)");
-        String gender = input.next();
+        String gender = input.nextLine();
 
         //If home quote create home owner
         if (quoteType == 1) {
@@ -69,10 +69,13 @@ public class QuoteCreationTesting {
             double value = input.nextDouble();
             System.out.println("Year built:");
             int year = input.nextInt();
+            input.nextLine();
             System.out.println("Dwelling Type:\n1 for Single\n2 for Apartment\n3 for Bungalow\n4 for Semi-Attached");
             int type = input.nextInt();
+            input.nextLine();
             System.out.println("Heating Type:\n1 for Electric\n2 for Oil\n3 for Wood\n4 for Gas\n5 for Other");
             int heat = input.nextInt();
+            input.nextLine();
 
             Home home = new Home(1, value, year, type, heat, "A1A1A1", "123 Fake Street",
                     "Citytown", "NL");
@@ -99,11 +102,13 @@ public class QuoteCreationTesting {
 
             // if vehicle quote get remaining driver info and create primary driver object
             System.out.println("Driver's license number:");
-            String licenseNumber = input.next();
+            String licenseNumber = input.nextLine();
             System.out.println("Driver's license year issued:");
             int licenseYear = input.nextInt();
+            input.nextLine();
             System.out.println("PrimaryDriver driving location:\n1 for Downtown\n2 for Avalon\n3 for Outside Avalon");
             int location = input.nextInt();
+            input.nextLine();
 
             PrimaryDriver driver = new PrimaryDriver(1, firstName, lastName, DOB, address, city, province, postal, phone,
                     email, gender, licenseNumber, licenseYear, location);
@@ -113,13 +118,14 @@ public class QuoteCreationTesting {
             System.out.println("Vehicle value:");
             double value = input.nextDouble();
             System.out.println("Vehicle make: ");
-            String make = input.next();
+            String make = input.nextLine();
             System.out.println("Vehicle year: ");
             int year = input.nextInt();
+            input.nextLine();
             System.out.println("Vehicle model: ");
-            String model = input.next();
+            String model = input.nextLine();
             System.out.println("Vehicle plate number: ");
-            String plate = input.next();
+            String plate = input.nextLine();
 
             Vehicle vehicle = new Vehicle(1, value, make, year, model, plate);
 
@@ -130,15 +136,16 @@ public class QuoteCreationTesting {
 
             while (!addAccident.equalsIgnoreCase("n")) {
                 System.out.println("Would you like to add an accident to your record? (y/n)");
-                addAccident = input.next();
+                addAccident = input.nextLine();
 
                 accidentId++;
 
                 if (addAccident.equalsIgnoreCase("y")) {
                     System.out.println("What was the year of the accident?");
                     int accidentYear = input.nextInt();
+                    input.nextLine();
                     System.out.println("Were you at fault? (y/n)");
-                    String atFaultCheck = input.next();
+                    String atFaultCheck = input.nextLine();
 
                     //TODO check if code cleanup compiles
                     if (atFaultCheck.equalsIgnoreCase("y")){
