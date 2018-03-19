@@ -5,18 +5,17 @@ import java.util.ArrayList;
 public abstract class Driver extends User {
 
     private String driversLicenceNumber;
-
     //TODO Change licenceYearIssued to Date AFTER Console Calculation
     private int licenceYearIssued;
     private int locationCode;
     private ArrayList<Accident> accidents;
 
-    public Driver (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
-                   String email, String gender, String postalCode, String driversLicenceNumber, int licenseYearIssued,
-                    int locationCode) {
+    public Driver (int userId, String firstName, String lastname, String dateOfBirth, String address, String city,
+                   String province, String postalCode, String phoneNumber, String email, String gender,
+                   String driversLicenceNumber, int licenseYearIssued, int locationCode) {
 
-        super(userId, dateOfBirth, address, city, province, phoneNumber,
-                email, gender, postalCode);
+        super(userId, firstName, lastname, dateOfBirth, address, city, province, phoneNumber, postalCode,
+                email, gender);
 
         this.licenceYearIssued = licenseYearIssued;
         this.driversLicenceNumber = driversLicenceNumber;

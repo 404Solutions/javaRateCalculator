@@ -2,16 +2,11 @@ package Insurance;
 
 import java.util.Calendar;
 
-public class HomeRisk extends Risk {
+public class HomePremium {
 
-    //TODO Does this need to extend Risk? Can that class be canned? it doens't really do anything
     private static final double basePremium = 280.00;
     private static final double valueBase = 250000.00;
     private static final double valueFactor = 0.001;
-
-    public HomeRisk() {
-        super (basePremium, valueBase, valueFactor);
-    }
 
     public static double calcPremium (double homeVal, int yearBuilt, int homeType, int heatingType) {
         return calcValuePremium(homeVal) * getAgeFactor(yearBuilt) * getTypeFactor(homeType) * getHeatingFactor(heatingType);

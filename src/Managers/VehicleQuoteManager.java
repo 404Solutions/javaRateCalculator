@@ -1,7 +1,7 @@
 package Managers;
 
 import Conversions.ConvertDates;
-import Insurance.Primary;
+import Insurance.PrimaryDriver;
 import Insurance.Vehicle;
 import Insurance.VehicleQuote;
 
@@ -15,8 +15,8 @@ public class VehicleQuoteManager {
     Statement statement = null;
     ResultSet resultSet = null;
 
-    public VehicleQuote createNewQuote(double basePremium, double tax, double total, Vehicle vehicle, Primary primary){
-        VehicleQuote quote = new VehicleQuote("",primary,null,null, basePremium, tax, total, vehicle,0);
+    public VehicleQuote createNewQuote(double basePremium, double tax, double total, Vehicle vehicle, PrimaryDriver primaryDriver){
+        VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, basePremium, tax, total, vehicle,0);
 
 
         try {
@@ -53,8 +53,8 @@ public class VehicleQuoteManager {
     }
 
 
-    public VehicleQuote selectQuote(String quoteID, Vehicle vehicle, Primary primary){
-        VehicleQuote quote = new VehicleQuote("",primary,null,null, 0, 0, 0, vehicle,0);
+    public VehicleQuote selectQuote(String quoteID, Vehicle vehicle, PrimaryDriver primaryDriver){
+        VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, 0, 0, 0, vehicle,0);
 
         try {
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
