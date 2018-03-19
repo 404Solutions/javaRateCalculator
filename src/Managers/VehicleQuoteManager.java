@@ -16,7 +16,7 @@ public class VehicleQuoteManager {
     ResultSet resultSet = null;
 
     public VehicleQuote createNewQuote(double basePremium, double tax, double total, Vehicle vehicle, PrimaryDriver primaryDriver){
-        VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, basePremium, tax, total, vehicle,0);
+        VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, basePremium, tax, total, vehicle,vehicle.getVehicleValue());
 
 
         try {
@@ -42,8 +42,6 @@ public class VehicleQuoteManager {
             ConvertDates convertDates = new ConvertDates();
             quote.setStartDate(convertDates.convertToUtilDate(resultSet.getDate("DateQuoted")));
             quote.setEndDate(convertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
-            //TODO: Remove this print.
-            System.out.print(quote.getQuoteID() + ","  + quote.getBasePremium()+ "," + quote.getTax() + "," + quote.getStartDate());
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
@@ -71,8 +69,6 @@ public class VehicleQuoteManager {
             quote.setBasePremium(resultSet.getDouble("BasePremium"));
             quote.setTax(resultSet.getDouble("Tax"));
             quote.setTotal(resultSet.getDouble("Total"));
-            //TODO: Remove this print.
-            System.out.print(quote.getQuoteID() + ","  + quote.getBasePremium()+ "," + quote.getTax());
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
