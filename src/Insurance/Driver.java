@@ -1,11 +1,11 @@
-package insurance;
+package Insurance;
 
 import java.util.ArrayList;
 
 public abstract class Driver extends User {
 
     private String driversLicenceNumber;
-    //TODO should this be a full date or is year fine?
+    //TODO Change licenceYearIssued to Date AFTER Console Calculation
     private int licenceYearIssued;
     private int locationCode;
     private ArrayList<Accident> accidents;
