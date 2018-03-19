@@ -2,6 +2,7 @@ package insurance;
 
 public class Accident {
     private int accidentsID;
+    //TODO Does the driver need to be stored on the accident?
     private Driver driver;
     private int secondaryID;
     //TODO should we store the full date or just the year?

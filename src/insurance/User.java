@@ -3,6 +3,8 @@ package insurance;
 public abstract class User {
 
     private int userId;
+    private String firstName;
+    private String lastName;
     private String dateOfBirth;
     private String address;
     private String city;
@@ -12,18 +14,20 @@ public abstract class User {
     private String gender;
     private String postalCode;
 
-    public User (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
-                 String email, String gender, String postalCode) {
+    public User (int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+                 String province, String postalCode, String phoneNumber, String email, String gender) {
 
         this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.city = city;
         this.province = province;
+        this.postalCode = postalCode;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.gender = gender;
-        this.postalCode = postalCode;
     }
 
     public int getUserId() {
@@ -32,6 +36,22 @@ public abstract class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getDateOfBirth() {

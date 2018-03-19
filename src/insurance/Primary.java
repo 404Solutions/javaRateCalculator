@@ -1,13 +1,15 @@
 package insurance;
 
+import java.util.Calendar;
+
 public class Primary extends Driver{
 
-    public Primary (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
-                    String email, String gender, String postalCode, String driversLicenceNumber, int licenceDateIssued,
-                    int locationCode) {
+    public Primary (int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+                    String province, String postalCode, String phoneNumber, String email, String gender,
+                    String driversLicenceNumber, Calendar licenceYearIssued, int locationCode) {
 
-        super (userId, dateOfBirth, address, city, province, phoneNumber,
-                email, gender, postalCode, driversLicenceNumber, licenceDateIssued, locationCode);
+        super (userId, firstName, lastName, dateOfBirth, address, city, province, postalCode, phoneNumber,
+                email, gender, driversLicenceNumber, licenceYearIssued, locationCode);
     }
 
 }

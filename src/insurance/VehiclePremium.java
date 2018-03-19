@@ -3,17 +3,13 @@ package insurance;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class VehicleRisk extends Risk {
+public class VehiclePremium {
 
     private static final double basePremium = 325.00;
     private static final double valueBase = 15000.00;
     private static final double valueFactor = 0.0125;
 
-    public VehicleRisk() {
-        super (basePremium, valueBase, valueFactor);
-    }
-
-    private static double calcPremium(double vehicleVal, int licenceYear, int locationType, ArrayList<Accident> accidents){
+    public static double calcPremium(double vehicleVal, int licenceYear, int locationType, ArrayList<Accident> accidents){
         return calcValuePremium(vehicleVal) * getExpFactor(licenceYear) * getLocationFactor(locationType) * getAccidentFactor(accidents);
     }
 

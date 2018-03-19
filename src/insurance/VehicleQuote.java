@@ -3,12 +3,10 @@ package insurance;
 public class VehicleQuote extends Quote {
 
     private Vehicle vehicle;
-    private double replacementCost;
 
-    public VehicleQuote(int quoteID, User user, String startDate, String endDate, double basePremium, double tax, double total, Vehicle vehicle, double replacementCost) {
+    public VehicleQuote(int quoteID, User user, String startDate, String endDate, double basePremium, double tax, double total, Vehicle vehicle) {
         super(quoteID, user, startDate, endDate, basePremium, tax, total);
         this.vehicle = vehicle;
-        this.replacementCost = replacementCost;
     }
 
     public Vehicle getVehicle() {
@@ -19,11 +17,4 @@ public class VehicleQuote extends Quote {
         this.vehicle = vehicle;
     }
 
-    public double getReplacementCost() {
-        return replacementCost;
-    }
-
-    public void setReplacementCost(double replacementCost) {
-        this.replacementCost = replacementCost;
-    }
 }

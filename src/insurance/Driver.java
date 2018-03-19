@@ -6,28 +6,24 @@ import java.util.Calendar;
 public abstract class Driver extends User {
 
     private String driversLicenceNumber;
-    //TODO should this be a full date or is year fine?
-    private Calendar licenceYearIssued;
+    private Calendar licenceDateIssued;
     private int locationCode;
     private ArrayList<Accident> accidents;
-    private int licenseYear;
 
-    public Driver (int userId, String dateOfBirth, String address, String city, String province, String phoneNumber,
-                   String email, String gender, String postalCode, String driversLicenceNumber, Calendar licenceYearIssued,
-                    int locationCode, int licenseYear) {
+    public Driver (int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+                   String province, String postalCode, String phoneNumber, String email, String gender,
+                   String driversLicenceNumber, Calendar licenceDateIssued, int locationCode) {
 
-        super(userId, dateOfBirth, address, city, province, phoneNumber,
-                email, gender, postalCode);
+        super(userId, firstName, lastName, dateOfBirth, address, city, province, postalCode, phoneNumber, email, gender);
 
         this.driversLicenceNumber = driversLicenceNumber;
-        this.licenceYearIssued = licenceYearIssued;
+        this.licenceDateIssued = licenceDateIssued;
         this.locationCode = locationCode;
         accidents = new ArrayList<>();
-        this.licenseYear= licenseYear;
     }
 
     public int getLicenseYear() {
-        return licenceYearIssued.get(Calendar.YEAR);
+        return licenceDateIssued.get(Calendar.YEAR);
     }
 
     public String getDriversLicenceNumber() {
@@ -38,12 +34,12 @@ public abstract class Driver extends User {
         this.driversLicenceNumber = driversLicenceNumber;
     }
 
-    public Calendar getLicenceYearIssued() {
-        return licenceYearIssued;
+    public Calendar getLicenceDateIssued() {
+        return licenceDateIssued;
     }
 
-    public void setLicenceYearIssued(Calendar licenceYearIssued) {
-        this.licenceYearIssued = licenceYearIssued;
+    public void setLicenceDateIssued(Calendar licenceDateIssued) {
+        this.licenceDateIssued = licenceDateIssued;
     }
 
     public int getLocationCode() {

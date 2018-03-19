@@ -3,6 +3,7 @@ package insurance;
 public class Home {
     private int homeID;
     private double value;
+    //TODO This should be eventually changed into a Calender object.
     private int yearBuilt;
     private int homeType;
     private int heatingType;
@@ -11,7 +12,8 @@ public class Home {
     private String city;
     private String province;
 
-    public Home(int homeID, double value, int yearBuilt, Integer homeType, Integer heatingType, String postalCode, String address, String city, String province) {
+    public Home(int homeID, double value, int yearBuilt, Integer homeType, Integer heatingType, String postalCode,
+                String address, String city, String province) {
         this.homeID = homeID;
         this.value = value;
         this.yearBuilt = yearBuilt;
