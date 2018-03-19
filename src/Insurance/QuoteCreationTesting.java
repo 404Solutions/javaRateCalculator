@@ -1,20 +1,26 @@
-package insurance;
+package Insurance;
 
 import Managers.HomeQuoteManager;
+import Managers.VehicleQuoteManager;
 
 import java.sql.SQLException;
-import java.text.NumberFormat;
-import java.util.Scanner;
 
 public class QuoteCreationTesting {
 
     public static void main(String[] args) throws SQLException {
 
-        HomeQuoteManager quoteManager = new HomeQuoteManager();
+        HomeQuoteManager homeQuoteManager = new HomeQuoteManager();
+        VehicleQuoteManager vehicleQuoteManager = new VehicleQuoteManager();
 
         HomeOwner homeOwner = new HomeOwner(1, "","","","","","","","");
         Home home = new Home(1,123,1993,1,2,"a1v2k4","","","");
-        quoteManager.createNewQuote(4000.00,50.95,4050.96, home, homeOwner);
+        homeQuoteManager.createNewQuote(4000.00,50.95,4050.96, home, homeOwner);
+
+        Primary primary = new Primary(0,"","","","","","","","", "",1992,2);
+        Vehicle vehicle = new Vehicle(0,321,"",1990,"","");
+        vehicleQuoteManager.createNewQuote(4012.0,650,2451,vehicle,primary);
+
+
 //
 //        Scanner input = new Scanner(System.in);
 //        NumberFormat formatter = NumberFormat.getCurrencyInstance();

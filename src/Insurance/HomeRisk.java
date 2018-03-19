@@ -1,4 +1,4 @@
-package insurance;
+package Insurance;
 
 import java.util.Calendar;
 

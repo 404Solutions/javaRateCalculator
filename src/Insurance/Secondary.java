@@ -1,4 +1,4 @@
-package insurance;
+package Insurance;
 
 public class Secondary extends Driver {
 
