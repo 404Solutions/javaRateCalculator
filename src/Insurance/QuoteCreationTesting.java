@@ -78,8 +78,8 @@ public class QuoteCreationTesting {
             int heat = input.nextInt();
             input.nextLine();
 
-            Home home = new Home(1, value, year, type, heat, "A1A1A1", "123 Fake Street",
-                    "Citytown", "NL");
+            Home home = new Home(1, value, year, type, heat, postal, address,
+                    city, province);
 
             //Calculate home premium and call quote manager to create a quote
             double homePremium = HomePremium.calcPremium(home.getValue(), home.getYearBuilt(), home.getHomeType(), home.getHeatingType());
