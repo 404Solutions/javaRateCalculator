@@ -83,7 +83,7 @@ public class QuoteCreationTesting {
 
             //Calculate home premium and call quote manager to create a quote
             double homePremium = HomePremium.calcPremium(home.getValue(), home.getYearBuilt(), home.getHomeType(), home.getHeatingType());
-            HomeQuote homeQuote = homeQuoteManager.createNewQuote(homePremium, homePremium * tax, homePremium * tax *100, home, homeOwner);
+            HomeQuote homeQuote = homeQuoteManager.createNewQuote(homePremium, homePremium * tax, (homePremium * tax) + homePremium, home, homeOwner);
 
             //Display the quote information to the user
             System.out.printf("--------------------Quote Number: %s--------------------\n", homeQuote.getQuoteID());
@@ -166,7 +166,7 @@ public class QuoteCreationTesting {
                     driver.getLocationCode(), driver.getAccidents());
 
             VehicleQuote vehicleQuote = vehicleQuoteManager.createNewQuote(vehiclePremium, vehiclePremium* tax,
-                    vehiclePremium * tax * 100, vehicle, driver);
+                    (vehiclePremium * tax) + vehiclePremium, vehicle, driver);
 
             //Display quote information to user
             System.out.printf("--------------------Quote Number: %s--------------------\n", vehicleQuote.getQuoteID());
