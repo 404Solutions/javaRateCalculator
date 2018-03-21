@@ -10,11 +10,20 @@ import java.sql.Statement;
 import java.sql.*;
 
 public class VehicleQuoteManager {
-    static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
+    private Connection connection = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
+    /**
+     * Creates a new Quote based on specific inputs
+     * @param basePremium basepremium double
+     * @param tax tax double
+     * @param total total double
+     * @param vehicle vehicle object
+     * @param primaryDriver primary driver object
+     * @return
+     */
     public VehicleQuote createNewQuote(double basePremium, double tax, double total, Vehicle vehicle, PrimaryDriver primaryDriver){
         VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, basePremium, tax, total, vehicle,vehicle.getVehicleValue());
 
@@ -39,9 +48,8 @@ public class VehicleQuoteManager {
             quote.setBasePremium(resultSet.getDouble("BasePremium"));
             quote.setTax(resultSet.getDouble("Tax"));
             quote.setTotal(resultSet.getDouble("Total"));
-            ConvertDates convertDates = new ConvertDates();
-            quote.setStartDate(convertDates.convertToUtilDate(resultSet.getDate("DateQuoted")));
-            quote.setEndDate(convertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
+            quote.setStartDate(ConvertDates.convertToUtilDate(resultSet.getDate("DateQuoted")));
+            quote.setEndDate(ConvertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
@@ -50,7 +58,13 @@ public class VehicleQuoteManager {
         return quote;
     }
 
-
+    /**
+     * Vehicle qupte selects a quote
+     * @param quoteID quoteID string
+     * @param vehicle vehicle object
+     * @param primaryDriver primaryDriver object.
+     * @return returns quote object
+     */
     public VehicleQuote selectQuote(String quoteID, Vehicle vehicle, PrimaryDriver primaryDriver){
         VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, 0, 0, 0, vehicle,0);
 
@@ -79,11 +93,11 @@ public class VehicleQuoteManager {
 
     /**
      * closeConnections servers as a function to close all connections to the database.
-     * @param statement
-     * @param resultSet
-     * @param connection
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
      */
-    public void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
+    private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
             statement.close();

@@ -13,21 +13,21 @@ import java.sql.Statement;
 import java.sql.*;
 
 public class HomeQuoteManager {
-    static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
+    private Connection connection = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
     /**
      * createNewQuote takes in all variables that are needed to generate a quote, inserts it to the database,
      * gets the generated ID of the homeQuote, and returns the quote as an object.
-     * @param basePremium
-     * @param tax
-     * @param total
-     * @param home
-     * @param homeOwner
-     * @return
-     * @throws SQLException
+     * @param basePremium base premium double
+     * @param tax tax double
+     * @param total total double
+     * @param home home object
+     * @param homeOwner homeOwner object
+     * @return returns quote object
+     * @throws SQLException throws exception if connection or query doesn't execute.
      */
     public HomeQuote createNewQuote(double basePremium, double tax, double total, Home home, HomeOwner homeOwner) throws SQLException {
         HomeQuote quote =  new HomeQuote("", homeOwner, null, null, basePremium, tax, total, home, home.getValue(), 0,0, 0);
@@ -51,9 +51,8 @@ public class HomeQuoteManager {
             quote.setBasePremium(resultSet.getDouble("BasePremium"));
             quote.setTax(resultSet.getDouble("Tax"));
             quote.setTotal(resultSet.getDouble("Total"));
-            ConvertDates convertDates = new ConvertDates();
-            quote.setStartDate(convertDates.convertToUtilDate(resultSet.getDate("DateQuoted")));
-            quote.setEndDate(convertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
+            quote.setStartDate(ConvertDates.convertToUtilDate(resultSet.getDate("DateQuoted")));
+            quote.setEndDate(ConvertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
@@ -64,9 +63,9 @@ public class HomeQuoteManager {
 
     /**
      * selectHomeQuote selects a homequote based on the quoteID and returns a HomeQuote object.
-     * @param quoteID
-     * @param home
-     * @param homeOwner
+     * @param quoteID ID of quote
+     * @param home homeID
+     * @param homeOwner homeowner object
      * @return
      */
     public HomeQuote selectQuote(String quoteID, Home home, HomeOwner homeOwner){
@@ -97,11 +96,11 @@ public class HomeQuoteManager {
 
     /**
      * closeConnections servers as a function to close all connections to the database.
-     * @param statement
-     * @param resultSet
-     * @param connection
+     * @param statement statement
+     * @param resultSet restultSet
+     * @param connection connection
      */
-    public void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
+    private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
             statement.close();
