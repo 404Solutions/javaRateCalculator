@@ -10,11 +10,11 @@ public abstract class Driver extends User {
     private int locationCode;
     private ArrayList<Accident> accidents;
 
-    public Driver (int userId, String firstName, String lastname, String dateOfBirth, String address, String city,
+    public Driver (int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                    String province, String postalCode, String phoneNumber, String email, String gender,
                    String driversLicenceNumber, int licenseYearIssued, int locationCode) {
 
-        super(userId, firstName, lastname, dateOfBirth, address, city, province, phoneNumber, postalCode,
+        super(userId, firstName, lastName, dateOfBirth, address, city, province, phoneNumber, postalCode,
                 email, gender);
 
         this.licenceYearIssued = licenseYearIssued;
