@@ -1,35 +1,36 @@
 package Insurance;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public abstract class Driver extends User {
 
     private String driversLicenceNumber;
     //TODO Change licenceYearIssued to Date AFTER Console Calculation
-    private int licenceYearIssued;
+    private Date licenceIssuedDate;
     private int locationCode;
     private ArrayList<Accident> accidents;
 
-    public Driver (int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+    public Driver (int userId, String firstName, String lastName, Date dateOfBirth, String address, String city,
                    String province, String postalCode, String phoneNumber, String email, String gender,
-                   String driversLicenceNumber, int licenseYearIssued, int locationCode) {
+                   String driversLicenceNumber, Date licenceIssuedDate, int locationCode) {
 
         super(userId, firstName, lastName, dateOfBirth, address, city, province, phoneNumber, postalCode,
                 email, gender);
 
-        this.licenceYearIssued = licenseYearIssued;
+        this.licenceIssuedDate = licenceIssuedDate;
         this.driversLicenceNumber = driversLicenceNumber;
         this.locationCode = locationCode;
         accidents = new ArrayList<>();
     }
 
 
-    public int getLicenceYearIssued() {
-        return licenceYearIssued;
+    public Date getLicenceIssuedDate() {
+        return licenceIssuedDate;
     }
 
-    public void setLicenceYearIssued(int licenceYearIssued) {
-        this.licenceYearIssued = licenceYearIssued;
+    public void setLicenceIssuedDate(Date licenceIssuedDate) {
+        this.licenceIssuedDate = licenceIssuedDate;
     }
 
     public String getDriversLicenceNumber() {

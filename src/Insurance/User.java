@@ -1,11 +1,13 @@
 package Insurance;
 
+import java.util.Date;
+
 public abstract class User {
 
     private int userId;
     private String firstName;
     private String lastName;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String address;
     private String city;
     private String province;
@@ -14,7 +16,7 @@ public abstract class User {
     private String gender;
     private String postalCode;
 
-    public User (int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+    public User (int userId, String firstName, String lastName, Date dateOfBirth, String address, String city,
                  String province, String postalCode, String phoneNumber, String email, String gender) {
 
         this.userId = userId;
@@ -54,11 +56,11 @@ public abstract class User {
         this.lastName = lastName;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
