@@ -1,9 +1,13 @@
 package Insurance;
 
+import Managers.HomeOwnerManager;
 import Managers.HomeQuoteManager;
 import Managers.VehicleQuoteManager;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 //import com.sun.org.apache.xpath.internal.SourceTree;
@@ -12,8 +16,12 @@ public class QuoteCreationTesting {
 
     public static void main(String[] args) throws SQLException {
 
-        HomeQuoteManager homeQuoteManager = new HomeQuoteManager();
-        VehicleQuoteManager vehicleQuoteManager = new VehicleQuoteManager();
+        //HomeQuoteManager homeQuoteManager = new HomeQuoteManager();
+        //VehicleQuoteManager vehicleQuoteManager = new VehicleQuoteManager();
+        HomeOwnerManager homeOwner = new HomeOwnerManager();
+        homeOwner.insertHomeOwner(2, "Jon", "Doe", "1997-09-30", "1 prince philip drive", "st.Johns","NL", "A1E5M2","709-555-5555", "email@email.com", "F");
+
+
 
 //      Test Data to be removed.
 //        HomeOwner homeOwner = new HomeOwner(1, "","","","","","","","");
