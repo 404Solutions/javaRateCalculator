@@ -44,4 +44,16 @@ public class ConvertDates {
 
         return sqlStartDate;
     }
+
+
+    public static java.util.Date convertStringToUtilDate(String date){
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date newDate = null;
+        try {
+            newDate = sdf1.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return newDate;
+    }
 }
