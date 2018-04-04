@@ -38,7 +38,7 @@ public class HomeOwnerManager {
             prepState.executeUpdate();
             //select object from db
 
-            query = "SELECT * FROM VehicleQuotes WHERE QuoteID = (SELECT MAX(QuoteID) FROM VehicleQuotes)";
+            query = "SELECT * FROM HomeOwner WHERE QuoteID = (SELECT MAX(QuoteID) FROM HomeOwner)";
             PreparedStatement prep = connection.prepareStatement(query);
             resultSet = prep.executeQuery();
             resultSet.next();
