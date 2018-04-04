@@ -35,15 +35,17 @@ public class HomeQuoteManager {
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
-            String query = "INSERT INTO HomeQuotes(DateQuoted, QuoteExpired, BasePremium, Tax, Total)\n" +
-                    "VALUES(CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY), ?, ?, ?)";
+            String query = "INSERT INTO HomeQuotes(DateQuoted, QuoteExpired, BasePremium, Tax, Total, UserID, HomeID)\n" +
+                    "VALUES(CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY), ?, ?, ?, ?, ?)";
             PreparedStatement prepState = connection.prepareStatement(query);
             prepState.setDouble(1, basePremium);
             prepState.setDouble(2, tax);
             prepState.setDouble(3, total);
+            prepState.setInt(4,homeOwner.getUserId());
+            prepState.setInt(5,home.getHomeID());
             prepState.executeUpdate();
             //Get created quote
-            query = "SELECT * FROM homequotes WHERE QuoteID = (SELECT MAX(QuoteID) FROM HomeQuotes)";
+            query = "SELECT * FROM HomeQuotes WHERE QuoteID = (SELECT MAX(QuoteID) FROM HomeQuotes)";
             PreparedStatement prep = connection.prepareStatement(query);
             resultSet = prep.executeQuery();
             resultSet.next();
