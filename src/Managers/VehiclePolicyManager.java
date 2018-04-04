@@ -41,7 +41,7 @@ public class VehiclePolicyManager {
             PreparedStatement prep = connection.prepareStatement(query);
             resultSet = prep.executeQuery();
             resultSet.next();
-            vehiclePolicy = new VehiclePolicy(resultSet.getString("PolicyID"), vehiclePolicy.getUser(), vehicleQuote, ConvertDates.convertToUtilDate(resultSet.getDate("StartDate")),ConvertDates.convertToUtilDate(resultSet.getDate("EndDate")) , vehiclePolicy.getBasePremium(), vehiclePolicy.getTax(), vehiclePolicy.getTotal(), vehiclePolicy.getVehicle(), vehiclePolicy.getReplacementCosts());
+            vehiclePolicy = new VehiclePolicy(resultSet.getString("PolicyID"), vehicleQuote.getUser(), vehicleQuote, ConvertDates.convertToUtilDate(resultSet.getDate("StartDate")),ConvertDates.convertToUtilDate(resultSet.getDate("EndDate")) , vehicleQuote.getBasePremium(), vehicleQuote.getTax(), vehicleQuote.getTotal(), vehicleQuote.getVehicle(), vehicleQuote.getVehicle().getVehicleValue());
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();

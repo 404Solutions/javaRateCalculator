@@ -34,12 +34,14 @@ public class VehicleQuoteManager {
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
-            String query = "INSERT INTO VehicleQuotes(DateQuoted, QuoteExpired, BasePremium, Tax, Total)\n" +
-                    "VALUES(CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY), ?, ?, ?)";
+            String query = "INSERT INTO VehicleQuotes( BasePremium, Tax, Total, VehicleID, ReplacementCost, DateQuoted, QuoteExpiredDate)\n" +
+                    "VALUES(?, ?, ?, ?, ?, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY))";
             PreparedStatement prepState = connection.prepareStatement(query);
             prepState.setDouble(1, basePremium);
             prepState.setDouble(2, tax);
             prepState.setDouble(3, total);
+            prepState.setInt(4,vehicle.getVehicleID());
+            prepState.setDouble(5, vehicle.getVehicleValue());
             prepState.executeUpdate();
             //Get created quote
             query = "SELECT * FROM VehicleQuotes WHERE QuoteID = (SELECT MAX(QuoteID) FROM VehicleQuotes)";
@@ -51,7 +53,7 @@ public class VehicleQuoteManager {
             quote.setTax(resultSet.getDouble("Tax"));
             quote.setTotal(resultSet.getDouble("Total"));
             quote.setStartDate(ConvertDates.convertToUtilDate(resultSet.getDate("DateQuoted")));
-            quote.setEndDate(ConvertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
+            quote.setEndDate(ConvertDates.convertToUtilDate(resultSet.getDate("QuoteExpiredDate")));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
