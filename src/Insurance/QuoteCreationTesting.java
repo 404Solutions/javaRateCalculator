@@ -18,19 +18,29 @@ public class QuoteCreationTesting {
 
 
         //testing date conversions.
-        System.out.print(ConvertDates.convertStringToUtilDate("1993-09-30"));
-
-
-        HomeQuoteManager homeQuoteManager = new HomeQuoteManager();
-        VehicleQuoteManager vehicleQuoteManager = new VehicleQuoteManager();
-        HomeOwnerManager homeOwnerManager = new HomeOwnerManager();
+//        System.out.print(ConvertDates.convertStringToUtilDate("1993-09-30"));
+//
+//
+//        HomeQuoteManager homeQuoteManager = new HomeQuoteManager();
+//        VehicleQuoteManager vehicleQuoteManager = new VehicleQuoteManager();
+//        HomeOwnerManager homeOwnerManager = new HomeOwnerManager();
         //HomeOwner homeOwner = homeOwnerManager.insertHomeOwner(2, "Jon", "Doe", "1997-09-30", "1 prince philip drive", "st.Johns","NL", "A1E5M2","709-555-5555", "email@email.com", "F");
 
 //        VehicleManager vehicleManager = new VehicleManager();
 //        Vehicle vehicle = vehicleManager.insertVehicle(45000, "toyota", 2013, "corolla", "HXL456");
 
-        HomeManager homeManager = new HomeManager();
-        Home home = homeManager.insertHome(200000, 1995, 1, 3, "a1e6h7", "1 prince philip drive", "St.Johns", "NL");
+//        HomeManager homeManager = new HomeManager();
+//        Home home = homeManager.insertHome(200000, 1995, 1, 3, "a1e6h7", "1 prince philip drive", "St.Johns", "NL");
+
+        AccountManager accountManager = new AccountManager();
+        Account account = accountManager.createNewAccount("meg3@gmail.com", "password1");
+
+        System.out.print(account.getUserId());
+
+
+
+
+
 //      Test Data to be removed.
 //        HomeOwner homeOwner = new HomeOwner(1, "","","","","","","","");
 //        Home home = new Home(1,123,1993,1,2,"a1v2k4","","","");
