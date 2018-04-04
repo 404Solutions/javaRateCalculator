@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.*;
 
+//TODO: Add second quote creation that takes secondary Driver in as a object.
 public class VehicleQuoteManager {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;

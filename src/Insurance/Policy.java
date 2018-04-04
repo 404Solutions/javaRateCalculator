@@ -1,17 +1,19 @@
 package Insurance;
 
+import java.util.Date;
+
 public abstract class Policy {
 
     private String policyID;
     private User user;
     private Quote quote;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
     private double basePremium;
     private double tax;
     private double total;
 
-    public Policy(String policyID, User user, Quote quote, String startDate, String endDate, double basePremium, double tax, double total) {
+    public Policy(String policyID, User user, Quote quote, Date startDate, Date endDate, double basePremium, double tax, double total) {
         this.policyID = policyID;
         this.user = user;
         this.quote = quote;
@@ -46,19 +48,19 @@ public abstract class Policy {
         this.quote = quote;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
