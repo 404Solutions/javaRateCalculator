@@ -45,7 +45,7 @@ public class HomeQuoteManager {
             prepState.setInt(5,home.getHomeID());
             prepState.executeUpdate();
             //Get created quote
-            query = "SELECT * FROM homequotes WHERE QuoteID = (SELECT MAX(QuoteID) FROM HomeQuotes)";
+            query = "SELECT * FROM HomeQuotes WHERE QuoteID = (SELECT MAX(QuoteID) FROM HomeQuotes)";
             PreparedStatement prep = connection.prepareStatement(query);
             resultSet = prep.executeQuery();
             resultSet.next();
