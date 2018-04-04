@@ -41,7 +41,7 @@ public class AccountManager {
             PreparedStatement prep = connection.prepareStatement(query);
             resultSet = prep.executeQuery();
             resultSet.next();
-            account.setUserId(resultSet.getInt("UserID"));
+            account =  new Account(resultSet.getInt("UserID"), email, password);
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } finally {
@@ -64,9 +64,7 @@ public class AccountManager {
             resultSet.next();
             //Only if passwords match, update the values.
             if(password.equals(resultSet.getString("Password"))){
-                account.setUserId(resultSet.getInt("UserID"));
-                account.setPassword(password);
-                account.setEmail(email);
+                account =  new Account(resultSet.getInt("UserID"), email, password);
                 access = true;
             }
             //add objects to the list.
