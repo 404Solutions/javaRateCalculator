@@ -56,7 +56,7 @@ public class HomeOwnerManager {
         return homeOwner;
     }
 
-    private HomeOwner selectPrimaryDriver(int userID){
+    private HomeOwner selectHomeOwner(int userID){
         HomeOwner homeOwner = null;
 
         try {
@@ -88,7 +88,7 @@ public class HomeOwnerManager {
     }
 
 
-    private HomeOwner updatePrimaryDriver(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+    private HomeOwner updateHomeOwner(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                                           String province, String postalCode, String phoneNumber, String email, String gender){
         HomeOwner homeOwner = null;
 
