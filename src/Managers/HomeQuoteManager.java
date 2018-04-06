@@ -27,11 +27,11 @@ public class HomeQuoteManager {
      * @param home home object
      * @param homeOwner homeOwner object
      * @return returns quote object
-     * @throws SQLException throws exception if connection or query doesn't execute.
      */
-    public HomeQuote createNewQuote(double basePremium, double tax, double total, Home home, HomeOwner homeOwner) throws SQLException {
+    public HomeQuote createNewQuote(double basePremium, double tax, double total, Home home, HomeOwner homeOwner) {
         HomeQuote quote =  new HomeQuote("", homeOwner, null, null, basePremium, tax, total, home, home.getValue(), 0,0, 0);
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -57,6 +57,8 @@ public class HomeQuoteManager {
             quote.setEndDate(ConvertDates.convertToUtilDate(resultSet.getDate("QuoteExpired")));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }
@@ -74,6 +76,7 @@ public class HomeQuoteManager {
         HomeQuote quote =  new HomeQuote("", homeOwner, null, null, 0, 0, 0, home, 1234, 2121,4322, 534);
 
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -90,6 +93,8 @@ public class HomeQuoteManager {
             quote.setTotal(resultSet.getDouble("Total"));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }

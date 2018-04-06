@@ -27,6 +27,7 @@ public class AccountManager {
     public Account createNewAccount(String email, String password) throws SQLException {
         Account account = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -44,16 +45,19 @@ public class AccountManager {
             account =  new Account(resultSet.getInt("UserID"), email, password);
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }
         return account;
     }
-    public ArrayList<Object> accountLogin(String email, String password) throws SQLException{
+    public ArrayList<Object> accountLogin(String email, String password){
         ArrayList<Object> list = new ArrayList<>();
         Boolean access = false;
         Account account = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -73,6 +77,8 @@ public class AccountManager {
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }

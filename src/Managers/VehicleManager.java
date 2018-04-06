@@ -16,10 +16,11 @@ public class VehicleManager {
     private ResultSet resultSet = null;
 
 
-    public Vehicle insertVehicle(double vehicleValue, String make, int year, String model, String plateNumber) throws SQLException {
+    public Vehicle insertVehicle(double vehicleValue, String make, int year, String model, String plateNumber) {
 
         Vehicle vehicle = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -41,6 +42,8 @@ public class VehicleManager {
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }

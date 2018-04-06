@@ -16,9 +16,8 @@ public class HomePolicyManager {
      * insertHomePolicy takes a homeQuote and converts it to a
      * @param homeQuote homeQuote object
      * @return returns a HomePolicy object
-     * @throws SQLException sql exception for connecting to database or runnnign query
      */
-    public HomePolicy insertHomePolicy(HomeQuote homeQuote) throws SQLException {
+    public HomePolicy insertHomePolicy(HomeQuote homeQuote)  {
 
         HomePolicy homePolicy = null;
         try {
@@ -38,7 +37,7 @@ public class HomePolicyManager {
             prepState.executeUpdate();
 
 
-            query = "SELECT * FROM HomePolicy WHERE PolicyID = (SELECT MAX(PolicyID) FROM homepolicy)";
+            query = "SELECT * FROM HomePolicy WHERE PolicyID = (SELECT MAX(PolicyID) FROM HomePolicy)";
             PreparedStatement prep = connection.prepareStatement(query);
             resultSet = prep.executeQuery();
             resultSet.next();
