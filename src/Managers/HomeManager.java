@@ -12,10 +12,11 @@ public class HomeManager {
     private ResultSet resultSet = null;
 
 
-    public Home insertHome(double value, int yearBuilt, Integer homeType, Integer heatingType, String postalCode, String address, String city, String province) throws SQLException {
+    public Home insertHome(double value, int yearBuilt, Integer homeType, Integer heatingType, String postalCode, String address, String city, String province) {
 
         Home home = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -41,6 +42,8 @@ public class HomeManager {
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }

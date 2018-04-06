@@ -20,9 +20,10 @@ public class AccidentManager {
      * @param responsible boolean
      * @throws SQLException throws sqlexception if connection or query failed.
      */
-    public void insertAccident(int primaryID, int secondaryID, int yearOfAccident, Boolean responsible) throws SQLException {
+    public void insertAccident(int primaryID, int secondaryID, int yearOfAccident, Boolean responsible){
 
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -37,6 +38,8 @@ public class AccidentManager {
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }

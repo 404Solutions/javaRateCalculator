@@ -17,10 +17,11 @@ public class VehiclePolicyManager {
 
 
 
-    public VehiclePolicy insertVehiclePolicy(VehicleQuote vehicleQuote) throws SQLException {
+    public VehiclePolicy insertVehiclePolicy(VehicleQuote vehicleQuote) {
 
         VehiclePolicy vehiclePolicy = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             statement = connection.createStatement();
             //Insert policy
@@ -45,6 +46,8 @@ public class VehiclePolicyManager {
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }

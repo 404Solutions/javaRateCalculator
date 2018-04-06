@@ -31,6 +31,7 @@ public class VehicleQuoteManager {
 
 
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -56,6 +57,8 @@ public class VehicleQuoteManager {
             quote.setEndDate(ConvertDates.convertToUtilDate(resultSet.getDate("QuoteExpiredDate")));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }
@@ -73,6 +76,7 @@ public class VehicleQuoteManager {
         VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, 0, 0, 0, vehicle,0);
 
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
@@ -80,7 +84,7 @@ public class VehicleQuoteManager {
             PreparedStatement prepState = connection.prepareStatement(query);
             prepState.setString(1, quoteID);
             //execute query
-            resultSet = prepState.executeQuery();
+             resultSet = prepState.executeQuery();
             resultSet.next();
             //populate quote
             quote.setQuoteID(resultSet.getString("QuoteID"));
@@ -89,6 +93,8 @@ public class VehicleQuoteManager {
             quote.setTotal(resultSet.getDouble("Total"));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } finally {
             closeConnections(statement, resultSet,connection);
         }
