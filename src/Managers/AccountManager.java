@@ -24,7 +24,7 @@ public class AccountManager {
      * @return returns Account object
      * @throws SQLException throws sqlException if queries or database connection were not successfully ran
      */
-    public Account createNewAccount(String email, String password) throws SQLException {
+    public Account createNewAccount(String email, String password) {
         Account account = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
