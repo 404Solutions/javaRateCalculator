@@ -9,8 +9,10 @@ public class VehiclePremium {
     private static final double valueBase = 15000.00;
     private static final double valueFactor = 0.0125;
 
-    public static double calcPremium(double vehicleVal, int licenceYear, int locationType, ArrayList<Accident> accidents){
-        return calcValuePremium(vehicleVal) * getExpFactor(licenceYear) * getLocationFactor(locationType) * getAccidentFactor(accidents);
+    public static double calcPremium(double vehicleVal, int licenceYear, int locationType, int accidentsWithin5,
+                                     int accidentsWithin10){
+        return calcValuePremium(vehicleVal) * getExpFactor(licenceYear) * getLocationFactor(locationType) *
+                getAccidentFactor(accidentsWithin5, accidentsWithin10);
     }
 
     private static double calcValuePremium(double vehicleVal) {
@@ -47,19 +49,7 @@ public class VehiclePremium {
         }
     }
 
-    private static double getAccidentFactor(ArrayList<Accident> accidents) {
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        int within5Years = 0;
-        int within10Years = 0;
-
-        for (Accident accident : accidents) {
-            if (currentYear - accident.getYearOfAccident() <= 5) {
-                within5Years++;
-            }
-            else if (currentYear - accident.getYearOfAccident() <= 10) {
-                within10Years++;
-            }
-        }
+    private static double getAccidentFactor(int within5Years, int within10Years) {
 
         if (within5Years + within10Years > 2) {
             return 2.75;
