@@ -41,13 +41,74 @@ public class AccidentManager {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
+            closeConnectionsNoResult(statement,connection);
+        }
+    }
+
+
+    public int countFive(int userId){
+        int count = 0;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
+            //InsertQuote
+            statement = connection.createStatement();
+            String query = "SELECT COUNT(accidentID) AS count FROM Accidents WHERE DateOfAccident >= DATE_SUB(curdate(), INTERVAL 5 YEAR) AND UserID = ?;";
+            PreparedStatement prepState = connection.prepareStatement(query);
+            prepState.setInt(1, userId);
+
+            resultSet = prepState.executeQuery();
+            resultSet.next();
+            count = resultSet.getInt("count");
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
             closeConnections(statement, resultSet,connection);
         }
+        return count;
+    }
+
+    public int countTen(int userId){
+        int count = 0;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
+            //InsertQuote
+            statement = connection.createStatement();
+            String query = "SELECT COUNT(accidentID) AS count FROM Accidents WHERE DateOfAccident >= DATE_SUB(curdate(), INTERVAL 10 YEAR) AND DateOfAccident <= DATE_SUB(curdate(), INTERVAL 5 YEAR) AND UserID = ?;;";
+            PreparedStatement prepState = connection.prepareStatement(query);
+            prepState.setInt(1, userId);
+
+            resultSet = prepState.executeQuery();
+            resultSet.next();
+            count = resultSet.getInt("count");
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnections(statement, resultSet,connection);
+        }
+        return count;
     }
 
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void closeConnectionsNoResult(Statement statement, Connection connection ){
+        try {
+
             statement.close();
             connection.close();
         } catch (Exception exception) {

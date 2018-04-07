@@ -75,9 +75,17 @@ public class QuoteCreationTesting {
         System.out.println(vehiclePolicy.getPolicyID());
 
 
+        // Secondary Driver test case
+        SecondaryDriver secondaryDriver = driversManager.insertSecondaryDriver( homeOwner.getFirstName(), homeOwner.getLastName(), "1997-09-30",
+                homeOwner.getAddress(), homeOwner.getCity(),
+                homeOwner.getProvince(), homeOwner.getPostalCode(), homeOwner.getPhoneNumber(), homeOwner.getEmail(), homeOwner.getGender(),
+                "A3GH8657", "2017-10-22");
 
+        System.out.print(secondaryDriver.getUserId());
 
-
+        AccidentManager accidentManager = new AccidentManager();
+        System.out.println(accidentManager.countFive(1));
+        System.out.println(accidentManager.countTen(1));
 
     }
 }

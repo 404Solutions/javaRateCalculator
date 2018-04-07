@@ -55,11 +55,11 @@ public class DriversManager {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            closeConnections(statement, resultSet,connection);
+            closeConnectionsNoResult(statement, connection);
         }
         return driver;
     }
-    public SecondaryDriver insertSecondaryDriver(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+    public SecondaryDriver insertSecondaryDriver(String firstName, String lastName, String dateOfBirth, String address, String city,
                                                String province, String postalCode, String phoneNumber, String email, String gender,
                                                String driversLicenceNumber, String licenseDateIssued){
 
@@ -69,26 +69,31 @@ public class DriversManager {
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
-            String query = "INSERT INTO SecondaryDriver(SecondaryID, FirstName, LastName, DOB, Address, City, Province, PostalCode, PhoneNumber, Email, Gender, DriversLicense, LicenseIssueDate)\n" +
-                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?);";
+            String query = "INSERT INTO SecondaryDriver(FirstName, LastName, DOB, Address, City, Province, PostalCode, PhoneNumber, Email, Gender, DriversLicense, LicenseIssueDate)\n" +
+                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?);";
             PreparedStatement prepState = connection.prepareStatement(query);
-            prepState.setInt(1,userId);
-            prepState.setString(2,firstName);
-            prepState.setString(3,lastName);
-            prepState.setDate(4, ConvertDates.convertStringToSqlDate(dateOfBirth));
-            prepState.setString(5, address);
-            prepState.setString(6, city);
-            prepState.setString(7, province);
-            prepState.setString(8, postalCode);
-            prepState.setString(9, phoneNumber);
-            prepState.setString(10, email);
-            prepState.setString(11, gender);
-            prepState.setString(12, driversLicenceNumber);
-            prepState.setDate(13, ConvertDates.convertStringToSqlDate(dateOfBirth));
+            prepState.setString(1,firstName);
+            prepState.setString(2,lastName);
+            prepState.setDate(3, ConvertDates.convertStringToSqlDate(dateOfBirth));
+            prepState.setString(4, address);
+            prepState.setString(5, city);
+            prepState.setString(6, province);
+            prepState.setString(7, postalCode);
+            prepState.setString(8, phoneNumber);
+            prepState.setString(9, email);
+            prepState.setString(10, gender);
+            prepState.setString(11, driversLicenceNumber);
+            prepState.setDate(12, ConvertDates.convertStringToSqlDate(dateOfBirth));
             prepState.executeUpdate();
             //create driver object
 
-            driver = new SecondaryDriver(userId, firstName, lastName, ConvertDates.convertStringToUtilDate(dateOfBirth), address, city,
+            query = "SELECT * FROM SecondaryDriver WHERE SecondaryID  = (SELECT MAX(SecondaryID) FROM SecondaryDriver)";
+            PreparedStatement prep = connection.prepareStatement(query);
+            resultSet = prep.executeQuery();
+            resultSet.next();
+
+
+            driver = new SecondaryDriver(resultSet.getInt("SecondaryID"), firstName, lastName, ConvertDates.convertStringToUtilDate(dateOfBirth), address, city,
                     province, postalCode, phoneNumber, email, gender,
                     driversLicenceNumber, ConvertDates.convertStringToUtilDate(licenseDateIssued));
 
@@ -97,7 +102,7 @@ public class DriversManager {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            closeConnectionsNoResult(statement,connection);
+            closeConnections(statement, resultSet, connection);
         }
         return driver;
     }
