@@ -107,7 +107,7 @@ public class DriversManager {
         return driver;
     }
 
-    private PrimaryDriver selectPrimaryDriver(int userID){
+    public PrimaryDriver selectPrimaryDriver(int userID){
         PrimaryDriver driver = null;
 
         try {
@@ -139,7 +139,7 @@ public class DriversManager {
         return driver;
     }
 
-    private PrimaryDriver updatePrimaryDriver(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+    public PrimaryDriver updatePrimaryDriver(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                                               String province, String postalCode, String phoneNumber, String email, String gender,
                                               String driversLicenceNumber, String licenseDateIssued, int locationCode){
         PrimaryDriver driver = null;

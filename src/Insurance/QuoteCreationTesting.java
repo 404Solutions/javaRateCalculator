@@ -81,7 +81,7 @@ public class QuoteCreationTesting {
                 homeOwner.getProvince(), homeOwner.getPostalCode(), homeOwner.getPhoneNumber(), homeOwner.getEmail(), homeOwner.getGender(),
                 "A3GH8657", "2017-10-22");
 
-        System.out.print(secondaryDriver.getUserId());
+        System.out.println(secondaryDriver.getUserId());
 
         AccidentManager accidentManager = new AccidentManager();
         System.out.println(accidentManager.countFive(1));

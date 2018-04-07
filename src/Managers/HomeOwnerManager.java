@@ -50,7 +50,7 @@ public class HomeOwnerManager {
         return homeOwner;
     }
 
-    private HomeOwner selectHomeOwner(int userID){
+    public HomeOwner selectHomeOwner(int userID){
         HomeOwner homeOwner = null;
 
         try {
@@ -82,7 +82,7 @@ public class HomeOwnerManager {
     }
 
 
-    private HomeOwner updateHomeOwner(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
+    public HomeOwner updateHomeOwner(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                                           String province, String postalCode, String phoneNumber, String email, String gender){
         HomeOwner homeOwner = null;
 
