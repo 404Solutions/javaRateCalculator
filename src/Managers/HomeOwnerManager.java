@@ -37,12 +37,6 @@ public class HomeOwnerManager {
             prepState.setString(10, gender);
             prepState.setString(11, phoneNumber);
             prepState.executeUpdate();
-            //select object from db
-
-            query = "SELECT * FROM HomeOwner WHERE QuoteID = (SELECT MAX(QuoteID) FROM HomeOwner)";
-            PreparedStatement prep = connection.prepareStatement(query);
-            resultSet = prep.executeQuery();
-            resultSet.next();
 
             homeOwner = new HomeOwner(userId, firstName, lastName, ConvertDates.convertStringToUtilDate(dateOfBirth), address, city, province, postalCode, phoneNumber, email, gender);
 
@@ -51,7 +45,7 @@ public class HomeOwnerManager {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            closeConnections(statement, resultSet,connection);
+            closeConnectionsNoResult(statement,connection);
         }
         return homeOwner;
     }
