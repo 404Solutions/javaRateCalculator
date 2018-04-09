@@ -53,7 +53,7 @@ public class AccidentManager {
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
-            String query = "SELECT COUNT(accidentID) AS count FROM Accidents WHERE DateOfAccident >= DATE_SUB(curdate(), INTERVAL 5 YEAR) AND UserID = ?;";
+            String query = "SELECT COUNT(accidentID) AS count FROM Accidents WHERE DateOfAccident >= YEAR(CURDATE()) - 5 AND UserID = ? AND Responsible = 1;";
             PreparedStatement prepState = connection.prepareStatement(query);
             prepState.setInt(1, userId);
 
@@ -78,7 +78,7 @@ public class AccidentManager {
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             //InsertQuote
             statement = connection.createStatement();
-            String query = "SELECT COUNT(accidentID) AS count FROM Accidents WHERE DateOfAccident >= DATE_SUB(curdate(), INTERVAL 10 YEAR) AND DateOfAccident <= DATE_SUB(curdate(), INTERVAL 5 YEAR) AND UserID = ?;;";
+            String query = "SELECT COUNT(accidentID) AS count FROM Accidents WHERE DateOfAccident >= YEAR(CURDATE()) - 10 AND DateOfAccident <= YEAR(CURDATE()) - 5 AND UserID = ? AND Responsible = 1;";
             PreparedStatement prepState = connection.prepareStatement(query);
             prepState.setInt(1, userId);
 
