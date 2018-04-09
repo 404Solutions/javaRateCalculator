@@ -29,7 +29,6 @@ public class VehicleQuoteManager {
     public VehicleQuote createNewQuote(double basePremium, double tax, double total, Vehicle vehicle, PrimaryDriver primaryDriver){
         VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, basePremium, tax, total, vehicle,vehicle.getVehicleValue());
 
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");

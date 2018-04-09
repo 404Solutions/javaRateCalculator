@@ -15,8 +15,6 @@ public class VehiclePolicyManager {
     private Statement statement = null;
     private ResultSet resultSet = null;
 
-
-
     public VehiclePolicy insertVehiclePolicy(VehicleQuote vehicleQuote) {
 
         VehiclePolicy vehiclePolicy = null;

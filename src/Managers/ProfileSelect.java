@@ -12,8 +12,6 @@ public class ProfileSelect {
     private Statement statement = null;
     private ResultSet resultSet = null;
 
-
-
     public ArrayList<Object> select(int userId){
         ArrayList<Object> list = new ArrayList<>();
 

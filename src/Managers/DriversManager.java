@@ -59,6 +59,7 @@ public class DriversManager {
         }
         return driver;
     }
+
     public SecondaryDriver insertSecondaryDriver(String firstName, String lastName, String dateOfBirth, String address, String city,
                                                String province, String postalCode, String phoneNumber, String email, String gender,
                                                String driversLicenceNumber, String licenseDateIssued){
