@@ -6,12 +6,20 @@ import Insurance.*;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * ProfileSelect that manages the connection to the database and selections of
+ */
 public class ProfileSelect {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
 
+    /**
+     * selects an entire profile based on a user id and returns all as objects in an ArrayList<object>
+     * @param userId int
+     * @return arrayList<Object>
+     */
     public ArrayList<Object> select(int userId){
         ArrayList<Object> list = new ArrayList<>();
 
@@ -109,20 +117,15 @@ public class ProfileSelect {
 
         return list;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
-
-    private void closeConnectionsNoResult(Statement statement, Connection connection ){
-        try {
-
             statement.close();
             connection.close();
         } catch (Exception exception) {

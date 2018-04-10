@@ -1,7 +1,9 @@
 package Insurance;
 
 import java.util.Date;
-
+/**
+ * User class that contains all private variables related to an User Object.
+ */
 public abstract class User {
 
     private int userId;
@@ -16,6 +18,20 @@ public abstract class User {
     private String gender;
     private String postalCode;
 
+    /**
+     * Constructor for User Class
+     * @param userId int
+     * @param firstName String
+     * @param lastName String
+     * @param dateOfBirth Date
+     * @param address String
+     * @param city String
+     * @param province String
+     * @param postalCode String
+     * @param phoneNumber String
+     * @param email String
+     * @param gender String
+     */
     public User (int userId, String firstName, String lastName, Date dateOfBirth, String address, String city,
                  String province, String postalCode, String phoneNumber, String email, String gender) {
 

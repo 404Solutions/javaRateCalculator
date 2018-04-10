@@ -1,10 +1,18 @@
 package Insurance;
-
+/**
+ * Account class that contains all private variables related to an Account Object.
+ */
 public class Account {
     private int userId;
     private String email;
     private String password;
 
+    /**
+     * Constructor for Account class
+     * @param userId int
+     * @param email string
+     * @param password string
+     */
     public Account(int userId, String email, String password) {
         this.userId = userId;
         this.email = email;

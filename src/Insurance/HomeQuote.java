@@ -1,7 +1,9 @@
 package Insurance;
 
 import java.util.Date;
-
+/**
+ * HomeQuote class that contains all private variables related to an HomeQuote Object.
+ */
 public class HomeQuote extends Quote {
 
     private Home home;
@@ -10,6 +12,21 @@ public class HomeQuote extends Quote {
     private double contentsLimit;
     private double contentsDeductible;
 
+    /**
+     * Constructor for HomeQuote Class
+     * @param quoteID String
+     * @param user User
+     * @param startDate date
+     * @param endDate date
+     * @param basePremium double
+     * @param tax double
+     * @param total double
+     * @param home Home
+     * @param replacementCost double
+     * @param liabilityLimit double
+     * @param contentsLimit double
+     * @param contentsDeductible double
+     */
     public HomeQuote(String quoteID, User user, Date startDate, Date endDate, double basePremium, double tax,
                      double total, Home home, double replacementCost, double liabilityLimit, double contentsLimit,
                      double contentsDeductible) {

@@ -1,13 +1,14 @@
 package Managers;
 
 import Conversions.ConvertDates;
-import Insurance.HomePolicy;
-import Insurance.HomeQuote;
 import Insurance.VehiclePolicy;
 import Insurance.VehicleQuote;
 
 import java.sql.*;
 
+/**
+ * VehiclePolicy that handles all connections to the database and queries that are related to a Vehicle Policy Object.
+ */
 public class VehiclePolicyManager {
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
@@ -15,6 +16,11 @@ public class VehiclePolicyManager {
     private Statement statement = null;
     private ResultSet resultSet = null;
 
+    /**
+     * insertVehiclePolicy inserts a vehicle policy to the database and returns a vehiclePOlicy object
+     * @param vehicleQuote VehicleQuote
+     * @return VehiclePolicy
+     */
     public VehiclePolicy insertVehiclePolicy(VehicleQuote vehicleQuote) {
 
         VehiclePolicy vehiclePolicy = null;
@@ -23,7 +29,7 @@ public class VehiclePolicyManager {
             connection = java.sql.DriverManager.getConnection(DATABASE_URL, "compUser", "compUser1");
             statement = connection.createStatement();
             //Insert policy
-            String query = "INSERT INTO VehiclePolicy(BasePremium, Tax, Total, ReplacementCostValue, VehicleID, UserID, QuoteID, StartDate, EndDate)\n" +
+            String query = "INSERT INTO VehiclePolicy(BasePremium, Tax, Total, ReplacementCostValue, UserID, VehicleID, QuoteID, StartDate, EndDate)\n" +
                     "VALUES(?,?,?,?,?,?,?,CURDATE(),DATE_ADD(CURDATE(), INTERVAL 1 YEAR));";
             PreparedStatement prepState = connection.prepareStatement(query);
             prepState.setDouble(1,vehicleQuote.getBasePremium());
@@ -51,7 +57,12 @@ public class VehiclePolicyManager {
         }
         return vehiclePolicy;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();

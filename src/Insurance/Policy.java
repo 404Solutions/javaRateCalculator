@@ -1,7 +1,9 @@
 package Insurance;
 
 import java.util.Date;
-
+/**
+ * Policy class that contains all private variables related to an Policy Object.
+ */
 public abstract class Policy {
 
     private String policyID;
@@ -13,6 +15,17 @@ public abstract class Policy {
     private double tax;
     private double total;
 
+    /**
+     * Constructor for Policy class
+     * @param policyID String
+     * @param user User
+     * @param quote Quote
+     * @param startDate date
+     * @param endDate date
+     * @param basePremium double
+     * @param tax double
+     * @param total double
+     */
     public Policy(String policyID, User user, Quote quote, Date startDate, Date endDate, double basePremium, double tax, double total) {
         this.policyID = policyID;
         this.user = user;

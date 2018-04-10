@@ -11,6 +11,10 @@ import java.sql.Statement;
 import java.sql.*;
 
 //TODO: Add second quote creation that takes secondary Driver in as a object.
+
+/**
+ * VehicleQuoteManager that handles all connections to the database and queries that are related to a VehicleQuoteManager Object.
+ */
 public class VehicleQuoteManager {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;
@@ -24,7 +28,7 @@ public class VehicleQuoteManager {
      * @param total total double
      * @param vehicle vehicle object
      * @param primaryDriver primary driver object
-     * @return
+     * @return VehicleQuote
      */
     public VehicleQuote createNewQuote(double basePremium, double tax, double total, Vehicle vehicle, PrimaryDriver primaryDriver){
         VehicleQuote quote = new VehicleQuote("", primaryDriver,null,null, basePremium, tax, total, vehicle,vehicle.getVehicleValue());

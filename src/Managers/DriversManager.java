@@ -10,12 +10,33 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.*;
 
+/**
+ * DriversManager that handles all connections to the database and queries that are related to a Driver Object.
+ */
 public class DriversManager {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
 
+    /**
+     * insertPrimaryDriver inserts a primary driver object into the database. Returns a primaryDriver object
+     * @param userId int
+     * @param firstName String
+     * @param lastName String
+     * @param dateOfBirth String
+     * @param address String
+     * @param city String
+     * @param province String
+     * @param postalCode String
+     * @param phoneNumber String
+     * @param email String
+     * @param gender String
+     * @param driversLicenceNumber String
+     * @param licenseDateIssued String
+     * @param locationCode int
+     * @return primaryDriver
+     */
     public PrimaryDriver insertPrimaryDriver(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                                         String province, String postalCode, String phoneNumber, String email, String gender,
                                         String driversLicenceNumber, String licenseDateIssued, int locationCode){
@@ -60,6 +81,22 @@ public class DriversManager {
         return driver;
     }
 
+    /**
+     * insertSecondaryDriver inserts a secondary driver object into the correct table of a database as a row and returns it as an object
+     * @param firstName String
+     * @param lastName String
+     * @param dateOfBirth String
+     * @param address String
+     * @param city String
+     * @param province String
+     * @param postalCode String
+     * @param phoneNumber String
+     * @param email String
+     * @param gender String
+     * @param driversLicenceNumber String
+     * @param licenseDateIssued String
+     * @return secondaryDriver
+     */
     public SecondaryDriver insertSecondaryDriver(String firstName, String lastName, String dateOfBirth, String address, String city,
                                                String province, String postalCode, String phoneNumber, String email, String gender,
                                                String driversLicenceNumber, String licenseDateIssued){
@@ -108,6 +145,11 @@ public class DriversManager {
         return driver;
     }
 
+    /**
+     * selectPrimaryDriver selects a primary driver from the database by its userID
+     * @param userID int
+     * @return PrimaryDriver
+     */
     public PrimaryDriver selectPrimaryDriver(int userID){
         PrimaryDriver driver = null;
 
@@ -140,6 +182,24 @@ public class DriversManager {
         return driver;
     }
 
+    /**
+     * updatePrimaryDriver function allows application to make updates to a primary driver row in the database
+     * @param userId int
+     * @param firstName string
+     * @param lastName string
+     * @param dateOfBirth date
+     * @param address string
+     * @param city string
+     * @param province string
+     * @param postalCode string
+     * @param phoneNumber string
+     * @param email string
+     * @param gender string
+     * @param driversLicenceNumber string
+     * @param licenseDateIssued string
+     * @param locationCode int
+     * @return
+     */
     public PrimaryDriver updatePrimaryDriver(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                                               String province, String postalCode, String phoneNumber, String email, String gender,
                                               String driversLicenceNumber, String licenseDateIssued, int locationCode){
@@ -181,7 +241,12 @@ public class DriversManager {
         }
         return driver;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
@@ -191,7 +256,11 @@ public class DriversManager {
             exception.printStackTrace();
         }
     }
-
+    /**
+     * Fucntion that closes the connection to the database and a statement
+     * @param statement statement
+     * @param connection connection
+     */
     private void closeConnectionsNoResult(Statement statement, Connection connection ){
         try {
 

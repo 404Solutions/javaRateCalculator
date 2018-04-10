@@ -1,5 +1,7 @@
 package Insurance;
-
+/**
+ * Vehicle class that contains all private variables related to an Vehicle Object.
+ */
 public class Vehicle {
     private int vehicleID;
     private double vehicleValue;
@@ -8,6 +10,15 @@ public class Vehicle {
     private String model;
     private String plateNumber;
 
+    /**
+     * Constructor for Vehicle
+     * @param vehicleID int
+     * @param vehicleValue double
+     * @param make String
+     * @param year int
+     * @param model String
+     * @param plateNumber String
+     */
     public Vehicle(int vehicleID, double vehicleValue, String make, int year, String model, String plateNumber) {
         this.vehicleID = vehicleID;
         this.vehicleValue = vehicleValue;

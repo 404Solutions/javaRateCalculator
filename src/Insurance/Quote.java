@@ -1,7 +1,9 @@
 package Insurance;
 
 import java.util.Date;
-
+/**
+ * Quote class that contains all private variables related to an Quote Object.
+ */
 public abstract class Quote {
 
     private String quoteID;
@@ -12,6 +14,16 @@ public abstract class Quote {
     private double tax;
     private double total;
 
+    /**
+     * Constructor for Quote Class
+     * @param quoteID String
+     * @param user user
+     * @param startDate date
+     * @param endDate date
+     * @param basePremium double
+     * @param tax double
+     * @param total double
+     */
     public Quote(String quoteID, User user, Date startDate, Date endDate, double basePremium, double tax, double total) {
         this.quoteID = quoteID;
         this.user = user;

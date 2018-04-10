@@ -1,12 +1,13 @@
 package Managers;
 
-import Conversions.ConvertDates;
-import Insurance.Home;
-import Insurance.PrimaryDriver;
+
 import Insurance.Vehicle;
 
 import java.sql.*;
 
+/**
+ * VehicleManager manages all connections and queries to the database that are related to a vehicle object.
+ */
 public class VehicleManager {
 
 
@@ -15,7 +16,15 @@ public class VehicleManager {
     private Statement statement = null;
     private ResultSet resultSet = null;
 
-
+    /**
+     * insertVehicle function inserts a vehicle into the database and returns the data in an object
+     * @param vehicleValue double
+     * @param make String
+     * @param year int
+     * @param model String
+     * @param plateNumber String
+     * @return Vehicle
+     */
     public Vehicle insertVehicle(double vehicleValue, String make, int year, String model, String plateNumber) {
 
         Vehicle vehicle = null;
@@ -49,7 +58,12 @@ public class VehicleManager {
         }
         return vehicle;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
