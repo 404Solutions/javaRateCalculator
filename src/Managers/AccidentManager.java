@@ -1,10 +1,11 @@
 package Managers;
 
-import Insurance.Accident;
-import Insurance.Driver;
 
 import java.sql.*;
 
+/**
+ * AccidentManager that manages all fo the backend and database connections related to accidents
+ */
 public class AccidentManager {
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
@@ -45,7 +46,11 @@ public class AccidentManager {
         }
     }
 
-
+    /**
+     * countFive that returns the number of accidents in the last 5 years
+     * @param userId int
+     * @return int
+     */
     public int countFive(int userId){
         int count = 0;
         try {
@@ -71,6 +76,11 @@ public class AccidentManager {
         return count;
     }
 
+    /**
+     * countTen which returns the number of accidents in the past 6 to 10 years
+     * @param userId int
+     * @return int
+     */
     public int countTen(int userId){
         int count = 0;
         try {
@@ -96,6 +106,12 @@ public class AccidentManager {
         return count;
     }
 
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
@@ -105,7 +121,11 @@ public class AccidentManager {
             exception.printStackTrace();
         }
     }
-
+    /**
+     * Fucntion that closes the connection to the database and a statement
+     * @param statement statement
+     * @param connection connection
+     */
     private void closeConnectionsNoResult(Statement statement, Connection connection ){
         try {
 

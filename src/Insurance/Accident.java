@@ -1,5 +1,8 @@
 package Insurance;
 
+/**
+ * Accident class that contains all private variables related to an Accident Object.
+ */
 public class Accident {
     private int accidentsID;
     private Driver driver;
@@ -8,6 +11,14 @@ public class Accident {
     private int yearOfAccident;
     private Boolean responsible;
 
+    /**
+     * Constructor for Accident object
+     * @param accidentsID int
+     * @param driver Driver object
+     * @param secondaryID int
+     * @param yearOfAccident int
+     * @param responsible boolean
+     */
     public Accident(int accidentsID, Driver driver, int secondaryID, int yearOfAccident, Boolean responsible) {
         this.accidentsID = accidentsID;
         this.driver = driver;

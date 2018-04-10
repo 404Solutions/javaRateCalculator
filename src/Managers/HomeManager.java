@@ -4,6 +4,9 @@ import Insurance.Home;
 
 import java.sql.*;
 
+/**
+ * HomeManager that manages all related database connections and queries related to a Home object.
+ */
 public class HomeManager {
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
@@ -11,8 +14,19 @@ public class HomeManager {
     private Statement statement = null;
     private ResultSet resultSet = null;
 
-
-    public Home insertHome(double value, int yearBuilt, Integer homeType, Integer heatingType, String postalCode, String address, String city, String province) {
+    /**
+     * insertHome is an function that inserts a home into the database as a row and returns an object
+     * @param value double
+     * @param yearBuilt int
+     * @param homeType int
+     * @param heatingType int
+     * @param postalCode String
+     * @param address String
+     * @param city String
+     * @param province String
+     * @return Home
+     */
+    public Home insertHome(double value, int yearBuilt, int homeType, int heatingType, String postalCode, String address, String city, String province) {
 
         Home home = null;
         try {
@@ -49,7 +63,12 @@ public class HomeManager {
         }
         return home;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();

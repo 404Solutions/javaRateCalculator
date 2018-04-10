@@ -4,8 +4,11 @@ import Conversions.ConvertDates;
 import Insurance.*;
 
 import java.sql.*;
-import java.util.Date;
 
+
+/**
+ * HomePolicyManager that manages all related database connections and queries related to a HomePolicy object.
+ */
 public class HomePolicyManager {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;
@@ -50,7 +53,12 @@ public class HomePolicyManager {
         }
         return homePolicy;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();

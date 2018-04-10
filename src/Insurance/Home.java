@@ -1,5 +1,7 @@
 package Insurance;
-
+/**
+ * Home class that contains all private variables related to an Home Object.
+ */
 public class Home {
     private int homeID;
     private double value;
@@ -11,7 +13,19 @@ public class Home {
     private String city;
     private String province;
 
-    public Home(int homeID, double value, int yearBuilt, Integer homeType, Integer heatingType, String postalCode, String address, String city, String province) {
+    /**
+     * Constructor for Home Class
+     * @param homeID int
+     * @param value double
+     * @param yearBuilt int
+     * @param homeType int
+     * @param heatingType int
+     * @param postalCode String
+     * @param address String
+     * @param city string
+     * @param province string
+     */
+    public Home(int homeID, double value, int yearBuilt, int homeType, int heatingType, String postalCode, String address, String city, String province) {
         this.homeID = homeID;
         this.value = value;
         this.yearBuilt = yearBuilt;

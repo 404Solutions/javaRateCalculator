@@ -7,12 +7,30 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.*;
 
+/**
+ * HomeOwnerManager that managers all the database connections and queries related to a homeOwner object.
+ */
 public class HomeOwnerManager {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
 
+    /**
+     * insertHomeOwner inserts a new homeowner object to the the database
+     * @param userId int
+     * @param firstName string
+     * @param lastName string
+     * @param dateOfBirth string
+     * @param address string
+     * @param city string
+     * @param province string
+     * @param postalCode string
+     * @param phoneNumber string
+     * @param email string
+     * @param gender string
+     * @return
+     */
     public HomeOwner insertHomeOwner(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                                            String province, String postalCode, String phoneNumber, String email, String gender){
 
@@ -50,6 +68,11 @@ public class HomeOwnerManager {
         return homeOwner;
     }
 
+    /**
+     * selectHomeOwner selects a homeOwner from the database based on their userID
+     * @param userID int
+     * @return HomeOwner
+     */
     public HomeOwner selectHomeOwner(int userID){
         HomeOwner homeOwner = null;
 
@@ -81,7 +104,21 @@ public class HomeOwnerManager {
         return homeOwner;
     }
 
-
+    /**
+     * updateHomeOwner updates a homeOwner in the database by their userID and returns the homeOwner object
+     * @param userId int
+     * @param firstName String
+     * @param lastName String
+     * @param dateOfBirth String
+     * @param address String
+     * @param city String
+     * @param province String
+     * @param postalCode String
+     * @param phoneNumber String
+     * @param email String
+     * @param gender string
+     * @return HomeOwner
+     */
     public HomeOwner updateHomeOwner(int userId, String firstName, String lastName, String dateOfBirth, String address, String city,
                                           String province, String postalCode, String phoneNumber, String email, String gender){
         HomeOwner homeOwner = null;
@@ -117,7 +154,12 @@ public class HomeOwnerManager {
         }
         return homeOwner;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
@@ -127,6 +169,11 @@ public class HomeOwnerManager {
             exception.printStackTrace();
         }
     }
+    /**
+     * Fucntion that closes the connection to the database and a statement
+     * @param statement statement
+     * @param connection connection
+     */
     private void closeConnectionsNoResult(Statement statement, Connection connection ){
         try {
 

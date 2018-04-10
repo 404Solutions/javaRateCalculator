@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.*;
 
+/**
+ * HomeQuoteManager that manages all related database connections and queries related to a HomeQuote object.
+ */
 public class HomeQuoteManager {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;

@@ -32,6 +32,11 @@ public class ConvertDates {
         return uDate;
     }
 
+    /**
+     * converts string to SQL date
+     * @param date String
+     * @return returns sql date
+     */
     public static java.sql.Date convertStringToSqlDate(String date){
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         Date newDate = null;
@@ -45,7 +50,11 @@ public class ConvertDates {
         return sqlStartDate;
     }
 
-
+    /**
+     * Converts String to java.Util.date
+     * @param date String
+     * @returnreturns util.Date
+     */
     public static java.util.Date convertStringToUtilDate(String date){
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         Date newDate = null;
@@ -55,5 +64,15 @@ public class ConvertDates {
             e.printStackTrace();
         }
         return newDate;
+    }
+    /**
+     * Converts a date to be rendered on the website.
+     * @param date date to be converted
+     * @return returns String of date
+     */
+    public static String convertToDisplayDate(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MMM-dd");
+
+        return format.format(date);
     }
 }

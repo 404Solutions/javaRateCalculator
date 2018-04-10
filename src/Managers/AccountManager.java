@@ -11,6 +11,9 @@ import java.sql.Statement;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Account manager that holds the database connections and backend logic for everything related to logins and account access.
+ */
 public class AccountManager {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/comp_database?autoReconnect=true&useSSL=false";
     private Connection connection = null;
@@ -52,6 +55,13 @@ public class AccountManager {
         }
         return account;
     }
+
+    /**
+     * accountLogin that verifies if an account should be able to progress past the login page. Returns arraylist with a boolean and an account object.
+     * @param email String
+     * @param password String
+     * @return arrayList<object>
+     */
     public ArrayList<Object> accountLogin(String email, String password){
         ArrayList<Object> list = new ArrayList<>();
         Boolean access = false;
@@ -85,7 +95,12 @@ public class AccountManager {
 
         return list;
     }
-
+    /**
+     * Fucntion that closes the connection to the database, a result set and a statement
+     * @param statement statement
+     * @param resultSet resultSet
+     * @param connection connection
+     */
     private void closeConnections(Statement statement, ResultSet resultSet, Connection connection ){
         try {
             resultSet.close();
